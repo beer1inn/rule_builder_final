@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .rule-builder {
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .rule-box {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .rule-part {
+            flex: 1;
+            margin-right: 5px;
+        }
+
+        .rule-part select, .rule-part input {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .add-rule-button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Rule Builder</title>
+</head>
+<body>
+
+<div class="rule-builder">
+    <div id="ruleBox" class="rule-box">
+        <div class="rule-part">
+            <select>
+                <option value="Field1">Field1</option>
+                <option value="Field2">Field2</option>
+                <!-- Add more fields as needed -->
+            </select>
+        </div>
+        <div class="rule-part">
+            <select>
+                <option value="=">=</option>
+                <option value="!=">!=</option>
+                <option value=">">></option>
+                <option value="<"><</option>
+                <!-- Add more operators as needed -->
+            </select>
+        </div>
+        <div class="rule-part">
+            <input type="text" placeholder="Enter value">
+        </div>
+    </div>
+
+    <button class="add-rule-button" onclick="addRule()">Add Rule</button>
+</div>
+
+<script>
+    function addRule() {
+        // Clone the existing rule box
+        var ruleBox = document.getElementById('ruleBox').cloneNode(true);
+
+        // Clear the input values in the cloned rule box
+        var inputs = ruleBox.querySelectorAll('input');
+        inputs.forEach(function (input) {
+            input.value = '';
+        });
+
+        // Append the cloned rule box to the rule builder
+        document.getElementById('ruleBox').parentNode.appendChild(ruleBox);
+    }
+</script>
+
+</body>
+</html>

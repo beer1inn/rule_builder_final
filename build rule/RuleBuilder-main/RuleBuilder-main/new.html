@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule Editor and Visualizer</title>
+    <link rel="stylesheet" href="https://unpkg.com/sortablejs@1.14.0/dist/sortable.min.css" />
+    <script src="https://unpkg.com/sortablejs@1.14.0/dist/sortable.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+        }
+
+        canvas {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        #ruleList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ruleItem {
+            border: 1px solid #ddd;
+            margin: 5px;
+            padding: 10px;
+            cursor: grab;
+        }
+
+        .addRuleButton {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #ruleEditor {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #ruleEditor input {
+            padding: 8px;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        #ruleEditor button {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Rule Editor and Visualizer</h2>
+        <button class="addRuleButton" onclick="addRule()">Add Rule</button>
+        <ul id="ruleList">
+            <!-- Rule items will be added here dynamically -->
+        </ul>
+        <canvas id="ruleChart" width="400" height="200"></canvas>
+
+        <div id="ruleEditor">
+            <h3>Edit Rule</h3>
+            <input type="text" id="editRuleInput" placeholder="Edit rule text">
+            <button onclick="updateRule()">Update Rule</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Sortable for drag-and-drop functionality
+        const ruleList = document.getElementById('ruleList');
+        const sortable = new Sortable(ruleList, {
+            animation: 150,
+            onEnd: updateChart // Update chart when a rule is moved
+        });
+
+        // Chart initialization
+        const ctx = document.getElementById('ruleChart').getContext('2d');
+        let myChart;
+
+        // Function to update the chart with rule data
+        function updateChart() {
+            const ruleLabels = [];
+            const ruleData = [];
+
+            // Loop through rule items and extract data
+            ruleList.querySelectorAll('.ruleItem').forEach((item, index) => {
+                ruleLabels.push(`Rule ${index + 1}`);
+                ruleData.push(index * 5 + 10); // Replace with your actual data or logic
+            });
+
+            // Update or create the chart
+            if (myChart) {
+                myChart.data.labels = ruleLabels;
+                myChart.data.datasets[0].data = ruleData;
+                myChart.update();
+            } else {
+                myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ruleLabels,
+                        datasets: [{
+                            label: 'Rule Builder Data',
+                            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1,
+                            data: ruleData,
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Add initial rule items (you can add more or remove as needed)
+        const initialRules = ['Condition 1', 'Condition 2', 'Condition 3'];
+        initialRules.forEach(rule => addRule(rule));
+
+        // Function to add a new rule item
+        function addRule(ruleText) {
+            const ruleItem = document.createElement('li');
+            ruleItem.className = 'ruleItem';
+            ruleItem.textContent = ruleText;
+            ruleItem.addEventListener('click', () => openRuleEditor(ruleText));
+            ruleList.appendChild(ruleItem);
+            updateChart(); // Update chart when a new rule is added
+        }
+
+        // Function to open the rule editor
+        function openRuleEditor(ruleText) {
+            document.getElementById('editRuleInput').value = ruleText;
+            document.getElementById('ruleEditor').style.display = 'block';
+        }
+
+        // Function to update the rule
+        function updateRule() {
+            const editedRule = document.getElementById('editRuleInput').value;
+            const selectedRuleItem = ruleList.querySelector('.ruleItem.selected');
+            
+            if (selectedRuleItem) {
+                selectedRuleItem.textContent = editedRule;
+                updateChart(); // Update chart after rule edit
+            }
+
+            // Close the rule editor
+            closeRuleEditor();
+        }
+
+        // Function to close the rule editor
+        function closeRuleEditor() {
+            document.getElementById('editRuleInput').value = '';
+            document.getElementById('ruleEditor').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+

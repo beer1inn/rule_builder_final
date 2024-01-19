@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .rule-builder {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+        }
+
+        .rule {
+            margin-bottom: 10px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        .add-rule {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="rule-builder">
+    <div class="rule">
+        <label for="property">Property:</label>
+        <select id="property">
+            <option value="color">Color</option>
+            <option value="font-size">Font Size</option>
+            <!-- Add more properties as needed -->
+        </select>
+    </div>
+    <div class="rule">
+        <label for="operator">Operator:</label>
+        <select id="operator">
+            <option value="equals">Equals</option>
+            <option value="not-equals">Not Equals</option>
+            <!-- Add more operators as needed -->
+        </select>
+    </div>
+    <div class="rule">
+        <label for="value">Value:</label>
+        <input type="text" id="value">
+    </div>
+    <button class="add-rule" onclick="addRule()">Add Rule</button>
+</div>
+
+<script>
+    function addRule() {
+        // You can add logic here to handle the selected property, operator, and value
+        // For this example, let's just log the values to the console
+        var property = document.getElementById("property").value;
+        var operator = document.getElementById("operator").value;
+        var value = document.getElementById("value").value;
+
+        console.log("Property: " + property);
+        console.log("Operator: " + operator);
+        console.log("Value: " + value);
+    }
+</script>
+
+</body>
+</html>

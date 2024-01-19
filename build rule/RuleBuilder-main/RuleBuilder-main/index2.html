@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>website</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+
+    </script>
+
+
+</head>
+
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <div class="navbar-brand">Decision<span class="logo-h">H</span>ub</div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                    <form action="/login" method="get" class="d-flex login-form" role="search">
+                        <button class="btn login" type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <!-- <nav>
+            <div class="logo">
+                <div class="pasta">
+                    <i class="fa-solid fa-bars" id="camera"></i>
+                </div>Decision<span>H</span>ub
+            </div>
+
+            <div class="menu">
+            </div>
+            <div class="icon">
+                <form action="/login" method="get">
+                    <button type="submit">Login</button>
+                </form>
+                <!-- <a href="/login">Login</a> -->
+        <!-- </div>
+        </nav> -->
+        
+        <section class="h-text">
+            <h1>RULE BUILDER</h1>
+            <div class="create">
+                <form action="/secondPage" method="get">
+                    <button type="submit" class="btn btn-success create-button">Create Rules</button>
+                </form>
+            </div>
+        </section>
+                     
+    </header>
+
+    <div class="container">
+        <div class="box">
+            <h2>Assingment</h2>
+            <p>Side effect rules are conditions where certain variables are calculated and
+                set. </p>
+        </div>
+        <div class="box boxx">
+            <h2>Nested</h2>
+            <p>Nested rules are typically used with Yes/No rules to decide when other
+                rules should run or should not run.</p>
+        </div>
+        <div class="box">
+            <h2>Yes/No</h2>
+            <p>These are rules that imply that the decision to be made should be a Yes or
+                No.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Decision Hub</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contacts</h4>
+                <p>decisionhub@gmail.com</p>
+                <p>+91 8735428542</p>
+            </div>
+
+            <!-- Add more footer sections as needed -->
+
+        </div>
+
+        <div class="footer-credits">
+            <p>Copyright &copy; 2024 | All Right Reserved</p>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+
+    <script type="text/javascript">
+        $('.portfolio-item').isotope({
+
+            itemSelector: '.item',
+            layoutMode: 'fitRows'
+        });
+
+        $('.portfolio-menu ul li').click(function () {
+            $('.portfolio-menu ul li').removeClass('active');
+            $(this).addClass('active');
+
+            var selector = $(this).attr('data-filter');
+            $('.portfolio-item').isotope({
+                filter: selector
+            });
+            return false;
+        });
+    </script>
+</body>
+
+</html>

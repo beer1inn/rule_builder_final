@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LHS and RHS Rule Writing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+        }
+
+        .rule {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 3px solid #0f2263;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .lhs, .rhs {
+            width: 48%; /* Adjust as needed */
+        }
+        .operator{
+            width: 250px;
+            height: 50px;
+            padding: 40px;
+            size: 90px;
+           
+        }
+        .lhs{
+            margin-left: 80px;
+            
+        }
+        .rhs{
+            margin-left: 20px;
+        }
+        .op{
+            margin-bottom: 100px;
+           
+        }
+    </style>
+</head>
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <div class="navbar-brand">Decision<span class="logo-h">H</span>ub</div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                    <form action="/login" method="get" class="d-flex login-form" role="search">
+                        <button class="btn login" type="submit">HOME</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="rule">
+                <div class="lhs">
+                    <h2>LHS</h2>
+                    
+                    <select name="" id="">
+                        <option value="">annual income</option>
+                        <option value="">CIBL SCORE</option>
+                        <option value="">age</option>
+                    </select>
+                    <input type="text" placeholder="write any other rule here">
+                </div>
+                <div class="operator">
+                    <div class="op">
+                        <h5>OPERATOR</h5>
+                    <select name="" id="" aria-placeholder="select operator here">
+                        <option value="equals">==</option>
+                        <option value="greater than equal to">>=</option>
+                        <option value="less than equal to"><=</option>
+                        <option value="">Any Other</option>
+                    </select>
+                    </div>
+                    
+                   
+                </div>
+                <div class="rhs">
+                    <h2>RHS</h2>
+                    <select name="" id="">
+                        <option value="">annual income</option>
+                        <option value="">CIBL SCORE</option>
+                        <option value="">age</option>
+                        <option value="">Any Other</option>
+                    </select>
+                <input type="text" placeholder="RHS value">
+                </div>
+            </div>
+    
+            <!-- Add more rules as needed -->
+        </div>
+    </header>
+    
+</body>
+</html>
